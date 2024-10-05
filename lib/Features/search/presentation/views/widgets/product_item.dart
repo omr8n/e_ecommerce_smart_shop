@@ -143,7 +143,6 @@ import 'package:e_commerce_shop_smart/core/widgets/heart_botton_widget.dart';
 import 'package:e_commerce_shop_smart/core/widgets/subtitle_text.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
 
 import '../../../../../core/widgets/title_text.dart';
 
@@ -182,6 +181,7 @@ class _ProductItemState extends State<ProductItem> {
               height: 15.0,
             ),
             const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Flexible(
                   flex: 6,
@@ -191,12 +191,13 @@ class _ProductItemState extends State<ProductItem> {
                     fontSize: 18,
                   ),
                 ),
-                Spacer(),
+                // Spacer(),
                 Flexible(
                     flex: 2,
                     child: HeartBottonWidget(
                       size: 18,
-                      color: Color.fromARGB(255, 71, 103, 171),
+                      iconColor: Color.fromARGB(255, 71, 103, 171),
+                      // color: Color.fromARGB(255, 71, 103, 171),
                     )
                     // child: HeartButtonWidget(
                     //     // productId: getCurrProduct.productId,

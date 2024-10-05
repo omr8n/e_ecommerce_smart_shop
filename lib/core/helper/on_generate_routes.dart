@@ -1,6 +1,10 @@
+import 'package:e_commerce_shop_smart/Features/auth/presentation/views/login_view.dart';
+import 'package:e_commerce_shop_smart/Features/auth/presentation/views/register_view.dart';
+import 'package:e_commerce_shop_smart/Features/inner_screens/wish_list_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../Features/home/presentation/views/product_details_veiw.dart';
+import '../../Features/inner_screens/viewed_recently.dart';
 import '../../Features/root/presentation/views/root_view.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -23,6 +27,15 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
           builder: (context) => const ProductDetailsVeiw());
     case RootView.routeName:
       return MaterialPageRoute(builder: (context) => const RootView());
+    case WishlistView.routeName:
+      return MaterialPageRoute(builder: (context) => const WishlistView());
+    case ViewedRecentlyVeiw.routeName:
+      return MaterialPageRoute(
+          builder: (context) => const ViewedRecentlyVeiw());
+    case RegisterView.routeName:
+      return MaterialPageRoute(builder: (context) => const RegisterView());
+    case LoginView.routeName:
+      return MaterialPageRoute(builder: (context) => const LoginView());
 
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());

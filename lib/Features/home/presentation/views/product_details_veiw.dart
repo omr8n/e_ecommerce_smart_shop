@@ -2,7 +2,6 @@ import 'package:e_commerce_shop_smart/core/constants/app_constants.dart';
 import 'package:e_commerce_shop_smart/core/widgets/heart_botton_widget.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
 
 import '../../../../core/widgets/custom_botton.dart';
 import '../../../../core/widgets/subtitle_text.dart';

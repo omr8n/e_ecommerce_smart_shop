@@ -277,15 +277,19 @@
 //   }
 // }
 
+import 'package:e_commerce_shop_smart/Features/auth/presentation/views/login_view.dart';
+import 'package:e_commerce_shop_smart/Features/inner_screens/viewed_recently.dart';
 import 'package:e_commerce_shop_smart/Features/profile/presentation/views/widgets/custom_list_tile.dart';
 import 'package:e_commerce_shop_smart/core/widgets/subtitle_text.dart';
 import 'package:e_commerce_shop_smart/core/widgets/title_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../core/helper/my_app_method.dart';
 import '../../../../core/providers/theme_provider.dart';
 import '../../../../core/utils/app_images.dart';
 import '../../../home/presentation/views/widgets/app_name_text.dart';
+import '../../../inner_screens/wish_list_view.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -356,12 +360,17 @@ class ProfileView extends StatelessWidget {
                 CustomListTile(
                   imagePath: Assets.imagesBagWishlistSvg,
                   text: "Wishlist",
-                  onTap: () {},
+                  onTap: () async {
+                    await Navigator.pushNamed(context, WishlistView.routeName);
+                  },
                 ),
                 CustomListTile(
                   imagePath: Assets.imagesProfileRecent,
                   text: "Viewed recently",
-                  onTap: () {},
+                  onTap: () async {
+                    await Navigator.pushNamed(
+                        context, ViewedRecentlyVeiw.routeName);
+                  },
                 ),
                 CustomListTile(
                   imagePath: Assets.imagesProfileAddress,
@@ -413,24 +422,24 @@ class ProfileView extends StatelessWidget {
                     ),
                 onPressed: () async {
                   // if (user == null) {
-                  //   await Navigator.pushNamed(
-                  //     context,
-                  //     LoginScreen.routName,
-                  //   );
+                  await Navigator.pushNamed(
+                    context,
+                    LoginView.routeName,
+                  );
                   // } else {
-                  //   await MyAppMethods.showErrorORWarningDialog(
-                  //     context: context,
-                  //     subtitle: "Are you sure?",
-                  //     fct: () async {
-                  //       await FirebaseAuth.instance.signOut();
-                  //       if (!mounted) return;
-                  //       await Navigator.pushReplacementNamed(
-                  //         context,
-                  //         LoginScreen.routName,
-                  //       );
-                  //     },
-                  //     isError: false,
-                  //   );
+                  await MyAppMethods.showErrorORWarningDialog(
+                    context: context,
+                    subtitle: "Are you sure?",
+                    fct: () async {
+                      // await FirebaseAuth.instance.signOut();
+                      // if (!mounted) return;
+                      // await Navigator.pushReplacementNamed(
+                      //   context,
+                      //   LoginScreen.routName,
+                      // );
+                    },
+                    isError: false,
+                  );
                   // }
                 },
               ),

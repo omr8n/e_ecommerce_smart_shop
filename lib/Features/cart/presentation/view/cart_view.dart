@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../../../core/utils/app_images.dart';
 import '../../../../core/widgets/empty_bag.dart';
 import '../../../../core/widgets/title_text.dart';
-import '../../../home/presentation/views/widgets/app_name_text.dart';
+
 import 'widgets/bottom_checkout.dart';
-import 'widgets/cart_item.dart';
+
 import 'widgets/cart_view_body.dart';
 
 class CartView extends StatefulWidget {

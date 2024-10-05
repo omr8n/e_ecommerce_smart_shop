@@ -44,12 +44,9 @@ class HomeView extends StatelessWidget {
                   SizedBox(
                     height: 18,
                   ),
-                  Visibility(
-                    visible: true,
-                    child: TitlesTextWidget(
-                      label: "Latest arrival",
-                      fontSize: 22,
-                    ),
+                  TitlesTextWidget(
+                    label: "Latest arrival",
+                    fontSize: 22,
                   ),
                   SizedBox(
                     height: 18,
