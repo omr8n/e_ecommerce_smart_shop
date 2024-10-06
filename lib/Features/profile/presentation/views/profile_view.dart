@@ -278,6 +278,7 @@
 // }
 
 import 'package:e_commerce_shop_smart/Features/auth/presentation/views/login_view.dart';
+import 'package:e_commerce_shop_smart/Features/inner_screens/orders/orders_view.dart';
 import 'package:e_commerce_shop_smart/Features/inner_screens/viewed_recently.dart';
 import 'package:e_commerce_shop_smart/Features/profile/presentation/views/widgets/custom_list_tile.dart';
 import 'package:e_commerce_shop_smart/core/widgets/subtitle_text.dart';
@@ -355,7 +356,10 @@ class ProfileView extends StatelessWidget {
                 CustomListTile(
                   imagePath: Assets.imagesBagOrderSvg,
                   text: "All order",
-                  onTap: () {},
+                  onTap: () async {
+                    await Navigator.pushNamed(
+                        context, OrdersViewFree.routeName);
+                  },
                 ),
                 CustomListTile(
                   imagePath: Assets.imagesBagWishlistSvg,

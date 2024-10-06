@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
 import '../../../../../core/utils/my_validators.dart';
+import 'button_login_and_rigister.dart';
+import 'forget_password_button.dart';
+import 'or_connect_using.dart';
 
 class LoginBodyViewForm extends StatefulWidget {
   const LoginBodyViewForm({super.key});
@@ -17,7 +20,7 @@ class _LoginBodyViewFormState extends State<LoginBodyViewForm> {
   late final TextEditingController _passwordController;
   late final FocusNode _emailFocusNode;
   late final FocusNode _passwordFocusNode;
-  late final _formKey = GlobalKey<FormState>();
+  late final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool obscureText = true;
   final bool isLoading = false;
 
@@ -40,6 +43,49 @@ class _LoginBodyViewFormState extends State<LoginBodyViewForm> {
     _emailFocusNode.dispose();
     _passwordFocusNode.dispose();
     super.dispose();
+  }
+
+  Future<void> _loginFct() async {
+    final isValid = _formKey.currentState!.validate();
+    FocusScope.of(context).unfocus();
+
+    if (isValid) {
+      _formKey.currentState!.save();
+
+      // try {
+      //   setState(() {
+      //     _isLoading = true;
+      //   });
+      //   await auth.signInWithEmailAndPassword(
+      //     email: _emailController.text.trim(),
+      //     password: _passwordController.text.trim(),
+      //   );
+      //   Fluttertoast.showToast(
+      //     msg: "Login Successful",
+      //     toastLength: Toast.LENGTH_SHORT,
+      //     textColor: Colors.white,
+      //   );
+      //   if (!mounted) return;
+
+      //   Navigator.pushReplacementNamed(context, RootScreen.routName);
+      // } on FirebaseAuthException catch (error) {
+      //   await MyAppMethods.showErrorORWarningDialog(
+      //     context: context,
+      //     subtitle: "An error has been occured ${error.message}",
+      //     fct: () {},
+      //   );
+      // } catch (error) {
+      //   await MyAppMethods.showErrorORWarningDialog(
+      //     context: context,
+      //     subtitle: "An error has been occured $error",
+      //     fct: () {},
+      //   );
+      // } finally {
+      //   setState(() {
+      //     _isLoading = false;
+      //   });
+      // }
+    }
   }
 
   @override
@@ -91,8 +137,27 @@ class _LoginBodyViewFormState extends State<LoginBodyViewForm> {
               return MyValidators.passwordValidator(value);
             },
             onFieldSubmitted: (value) {
-              // _loginFct();
+              _loginFct();
             },
+          ),
+          const SizedBox(
+            height: 16.0,
+          ),
+          const ForgetPasswordButton(),
+          const SizedBox(
+            height: 16.0,
+          ),
+          ButtonLoginAndRegister(
+            text: "Login",
+            icon: const Icon(Icons.login),
+            onPressed: () {},
+          ),
+          const SizedBox(
+            height: 16.0,
+          ),
+          const OrConnectUsing(),
+          const SizedBox(
+            height: 16.0,
           ),
         ],
       ),

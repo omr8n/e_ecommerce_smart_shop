@@ -17,7 +17,6 @@ class RigisterViewBody extends StatefulWidget {
 class _RigisterViewBodyState extends State<RigisterViewBody> {
   @override
   Widget build(BuildContext context) {
-    // Size size = MediaQuery.of(context).size;
     return Column(
       children: [
         const SizedBox(
@@ -42,25 +41,10 @@ class _RigisterViewBodyState extends State<RigisterViewBody> {
         const SizedBox(
           height: 16.0,
         ),
-        // SizedBox(
-        //   height: size.width * 0.3,
-        //   width: size.width * 0.3,
-        //   child: PickImageWidget(
-        //     pickedImage: _pickedImage,
-        //     function: () async {
-        //       // await localImagePicker();
-        //     },
-        //   ),
-        // ),
-
-        const SizedBox(
-          height: 16.0,
-        ),
         const RigisterViewBodyForm(),
         const SizedBox(
           height: 25.0,
         ),
-
         ButtonLoginAndRegister(
           text: "Sign up",
           icon: const Icon(IconlyLight.addUser),

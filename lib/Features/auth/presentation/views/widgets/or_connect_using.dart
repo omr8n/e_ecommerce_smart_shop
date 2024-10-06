@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/auth/google_btn.dart';
+import '../../../../../core/widgets/subtitle_text.dart';
 import '../../../../root/presentation/views/root_view.dart';
 
 class OrConnectUsing extends StatelessWidget {
@@ -11,47 +12,61 @@ class OrConnectUsing extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: SizedBox(
-        height: kBottomNavigationBarHeight + 10,
-        child: Row(
+        //height: kBottomNavigationBarHeight + 10,
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            const Expanded(
-              flex: 2,
-              child: SizedBox(
-                height: kBottomNavigationBarHeight,
-                child: FittedBox(
-                  child: GoogleButton(),
-                ),
+            FittedBox(
+              child: SubtitleTextWidget(
+                label: "OR connect using".toUpperCase(),
               ),
             ),
             const SizedBox(
-              width: 8,
+              height: 16.0,
             ),
-            Expanded(
-              child: SizedBox(
-                height: kBottomNavigationBarHeight,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.all(12),
-                    // backgroundColor:
-                    // Theme.of(context).colorScheme.background,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                        10,
-                      ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const Expanded(
+                  flex: 2,
+                  child: SizedBox(
+                    height: kBottomNavigationBarHeight,
+                    child: FittedBox(
+                      child: GoogleButton(),
                     ),
                   ),
-                  child: const Text(
-                    "Guest",
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                  onPressed: () async {
-                    Navigator.pushReplacementNamed(context, RootView.routeName);
-                  },
                 ),
-              ),
+                const SizedBox(
+                  width: 8,
+                ),
+                Expanded(
+                  child: SizedBox(
+                    height: kBottomNavigationBarHeight,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.all(12),
+                        // backgroundColor:
+                        // Theme.of(context).colorScheme.background,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            10,
+                          ),
+                        ),
+                      ),
+                      child: const Text(
+                        "Guest",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      onPressed: () async {
+                        Navigator.pushReplacementNamed(
+                            context, RootView.routeName);
+                      },
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

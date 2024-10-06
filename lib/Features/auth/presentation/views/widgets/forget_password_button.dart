@@ -1,7 +1,7 @@
 import 'package:e_commerce_shop_smart/core/widgets/subtitle_text.dart';
 import 'package:flutter/material.dart';
 
-import '../forgot_password.dart';
+import '../forgot_password_view.dart';
 
 class ForgetPasswordButton extends StatelessWidget {
   const ForgetPasswordButton({
@@ -14,7 +14,7 @@ class ForgetPasswordButton extends StatelessWidget {
       alignment: Alignment.centerRight,
       child: TextButton(
         onPressed: () {
-          Navigator.pushNamed(context, ForgotPasswordScreen.routeName);
+          Navigator.pushNamed(context, ForgotPasswordView.routeName);
         },
         child: const SubtitleTextWidget(
           label: "Forgot password?",

@@ -1,8 +1,10 @@
 import 'package:e_commerce_shop_smart/Features/auth/presentation/views/login_view.dart';
 import 'package:e_commerce_shop_smart/Features/auth/presentation/views/register_view.dart';
+import 'package:e_commerce_shop_smart/Features/inner_screens/orders/orders_view.dart';
 import 'package:e_commerce_shop_smart/Features/inner_screens/wish_list_view.dart';
 import 'package:flutter/material.dart';
 
+import '../../Features/auth/presentation/views/forgot_password_view.dart';
 import '../../Features/home/presentation/views/product_details_veiw.dart';
 import '../../Features/inner_screens/viewed_recently.dart';
 import '../../Features/root/presentation/views/root_view.dart';
@@ -36,6 +38,11 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const RegisterView());
     case LoginView.routeName:
       return MaterialPageRoute(builder: (context) => const LoginView());
+    case OrdersViewFree.routeName:
+      return MaterialPageRoute(builder: (context) => const OrdersViewFree());
+    case ForgotPasswordView.routeName:
+      return MaterialPageRoute(
+          builder: (context) => const ForgotPasswordView());
 
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());

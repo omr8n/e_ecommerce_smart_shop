@@ -7,15 +7,15 @@ import '../../../../core/widgets/subtitle_text.dart';
 import '../../../../core/widgets/title_text.dart';
 import '../../../home/presentation/views/widgets/app_name_text.dart';
 
-class ForgotPasswordScreen extends StatefulWidget {
+class ForgotPasswordView extends StatefulWidget {
   static const routeName = '/ForgotPasswordScreen';
-  const ForgotPasswordScreen({super.key});
+  const ForgotPasswordView({super.key});
 
   @override
-  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
+  State<ForgotPasswordView> createState() => _ForgotPasswordViewState();
 }
 
-class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+class _ForgotPasswordViewState extends State<ForgotPasswordView> {
   late final TextEditingController _emailController;
   late final _formKey = GlobalKey<FormState>();
 

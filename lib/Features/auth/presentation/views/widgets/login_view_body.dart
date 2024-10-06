@@ -1,5 +1,5 @@
 import 'package:e_commerce_shop_smart/Features/auth/presentation/views/widgets/login_body_view_form.dart';
-import 'package:e_commerce_shop_smart/Features/auth/presentation/views/widgets/or_connect_using.dart';
+
 import 'package:e_commerce_shop_smart/core/widgets/subtitle_text.dart';
 import 'package:flutter/material.dart';
 
@@ -7,8 +7,6 @@ import '../../../../../core/widgets/title_text.dart';
 import '../../../../home/presentation/views/widgets/app_name_text.dart';
 
 import '../register_view.dart';
-import 'button_login_and_rigister.dart';
-import 'forget_password_button.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key});
@@ -38,31 +36,6 @@ class LoginViewBody extends StatelessWidget {
             height: 16.0,
           ),
           const LoginBodyViewForm(),
-          const SizedBox(
-            height: 16.0,
-          ),
-          const ForgetPasswordButton(),
-          const SizedBox(
-            height: 16.0,
-          ),
-          ButtonLoginAndRegister(
-            text: "Login",
-            icon: const Icon(Icons.login),
-            onPressed: () {},
-          ),
-          const SizedBox(
-            height: 16.0,
-          ),
-          SubtitleTextWidget(
-            label: "OR connect using".toUpperCase(),
-          ),
-          const SizedBox(
-            height: 16.0,
-          ),
-          const OrConnectUsing(),
-          const SizedBox(
-            height: 16.0,
-          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
