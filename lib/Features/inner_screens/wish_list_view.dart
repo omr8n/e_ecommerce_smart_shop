@@ -3,13 +3,15 @@
 // import 'package:provider/provider.dart';
 
 import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
-import 'package:e_commerce_shop_smart/Features/search/presentation/views/widgets/product_item.dart';
 import 'package:e_commerce_shop_smart/core/utils/app_images.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../core/helper/my_app_method.dart';
+import '../../core/providers/wishlist_provider.dart';
 import '../../core/widgets/empty_bag.dart';
 import '../../core/widgets/title_text.dart';
+import '../search/presentation/views/widgets/product_item.dart';
 
 class WishlistView extends StatefulWidget {
   static const routeName = '/WishlistScreen';
@@ -23,8 +25,8 @@ class _WishlistViewState extends State<WishlistView> {
   bool isEmbty = true;
   @override
   Widget build(BuildContext context) {
-    //  final wishlistProvider = Provider.of<WishlistProvider>(context);
-    return isEmbty
+    final wishlistProvider = Provider.of<WishlistProvider>(context);
+    return wishlistProvider.getWishlistItems.isEmpty
         ? const Scaffold(
             body: EmptyBagWidget(
               imagePath: Assets.imagesBagBagWish,
@@ -36,9 +38,9 @@ class _WishlistViewState extends State<WishlistView> {
           )
         : Scaffold(
             appBar: AppBar(
-              title: const TitlesTextWidget(label: "ewgewgw"
-                  // "Wishlist (${wishlistProvider.getWishlistItems.length})"
-                  ),
+              title: TitlesTextWidget(
+                  label:
+                      "Wishlist (${wishlistProvider.getWishlistItems.length})"),
               leading: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Image.asset(Assets.imagesBagShoppingCart),
@@ -52,7 +54,7 @@ class _WishlistViewState extends State<WishlistView> {
                         subtitle: "Remove items",
                         fct: () async {
                           // await wishlistProvider.clearWishlistFromFirebase();
-                          // wishlistProvider.clearLocalWishlist();
+                          wishlistProvider.clearLocalWishlist();
                         });
                   },
                   icon: const Icon(
@@ -63,13 +65,13 @@ class _WishlistViewState extends State<WishlistView> {
               ],
             ),
             body: DynamicHeightGridView(
-              itemCount: 3,
+              itemCount: wishlistProvider.getWishlistItems.length,
               builder: ((context, index) {
-                return const ProductItem(
-                    //   productId: wishlistProvider.getWishlistItems.values
-                    // .toList()[index]
-                    // .productId,
-                    );
+                return ProductItem(
+                  productId: wishlistProvider.getWishlistItems.values
+                      .toList()[index]
+                      .productId,
+                );
               }),
               crossAxisCount: 2,
             ),

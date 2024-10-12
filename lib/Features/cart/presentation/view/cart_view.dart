@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../core/helper/my_app_method.dart';
+import '../../../../core/providers/cart_provider.dart';
 import '../../../../core/utils/app_images.dart';
 import '../../../../core/widgets/empty_bag.dart';
 import '../../../../core/widgets/title_text.dart';
@@ -20,12 +23,14 @@ class _CartScreenState extends State<CartView> {
   bool isEmbty = false;
   @override
   Widget build(BuildContext context) {
-    // final cartProvider = Provider.of<CartProvider>(context);
+    final cartProvider = Provider.of<CartProvider>(
+      context,
+    );
     // final userProvider = Provider.of<UserProvider>(context, listen: false);
     // final productProvider =
     //     Provider.of<ProductProvider>(context, listen: false);
 
-    return isEmbty
+    return cartProvider.getCartItems.isEmpty
         ? const Scaffold(
             body: EmptyBagWidget(
               imagePath: Assets.imagesBagShoppingBasket,
@@ -44,8 +49,8 @@ class _CartScreenState extends State<CartView> {
               // );
             }),
             appBar: AppBar(
-              title: const TitlesTextWidget(
-                label: "",
+              title: TitlesTextWidget(
+                label: "Cart ${cartProvider.getCartItems.length}",
                 // label: "Cart (${cartProvider.getCartItems.length})"
               ),
               leading: Padding(
@@ -55,14 +60,14 @@ class _CartScreenState extends State<CartView> {
               actions: [
                 IconButton(
                     onPressed: () {
-                      // MyAppMethods.showErrorORWarningDialog(
-                      //     isError: false,
-                      //     context: context,
-                      //     subtitle: "Remove items",
-                      //     fct: () async {
-                      //       // cartProvider.clearLocalCart();
-                      //       await cartProvider.clearCartFromFirebase();
-                      //     });
+                      MyAppMethods.showErrorORWarningDialog(
+                          isError: false,
+                          context: context,
+                          subtitle: "Remove items",
+                          fct: () async {
+                            cartProvider.clearLocalCart();
+                            // await cartProvider.clearCartFromFirebase();
+                          });
                     },
                     icon: const Icon(
                       Icons.delete_forever_rounded,

@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 
 import '../../Features/auth/presentation/views/forgot_password_view.dart';
 import '../../Features/home/presentation/views/product_details_veiw.dart';
+import '../../Features/inner_screens/dashboard_screen.dart';
 import '../../Features/inner_screens/viewed_recently.dart';
 import '../../Features/root/presentation/views/root_view.dart';
+import '../../Features/search/presentation/views/search_view.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   // switch (settings.name) {
@@ -27,6 +29,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case ProductDetailsVeiw.routeName:
       return MaterialPageRoute(
           builder: (context) => const ProductDetailsVeiw());
+
     case RootView.routeName:
       return MaterialPageRoute(builder: (context) => const RootView());
     case WishlistView.routeName:
@@ -43,6 +46,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case ForgotPasswordView.routeName:
       return MaterialPageRoute(
           builder: (context) => const ForgotPasswordView());
+    case SearchView.routeName:
+      return MaterialPageRoute(builder: (context) => const SearchView());
+    case DashboardScreen.routeName:
+      return MaterialPageRoute(builder: (context) => const DashboardScreen());
 
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());

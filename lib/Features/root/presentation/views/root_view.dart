@@ -70,7 +70,6 @@ class _RootViewState extends State<RootView> {
 
   @override
   Widget build(BuildContext context) {
-    // final cartProvider = Provider.of<CartProvider>(context);
     return Scaffold(
         body: PageView(
           controller: controller,

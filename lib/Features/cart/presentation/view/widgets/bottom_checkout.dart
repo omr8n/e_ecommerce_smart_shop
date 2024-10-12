@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../../core/providers/cart_provider.dart';
+import '../../../../../core/providers/product_provider.dart';
 import '../../../../../core/widgets/subtitle_text.dart';
 import '../../../../../core/widgets/title_text.dart';
 
@@ -8,8 +11,8 @@ class CartBottomCheckout extends StatelessWidget {
   final Function function;
   @override
   Widget build(BuildContext context) {
-    // final cartProvider = Provider.of<CartProvider>(context);
-    // final productProvider = Provider.of<ProductProvider>(context);
+    final cartProvider = Provider.of<CartProvider>(context, listen: true);
+    final productProvider = Provider.of<ProductProvider>(context);
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
@@ -24,23 +27,23 @@ class CartBottomCheckout extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Flexible(
+              Flexible(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     FittedBox(
-                        // fit: BoxFit.scaleDown,
-                        child: TitlesTextWidget(
-                      label: "total 6 products/ 3 Items",
+                      // fit: BoxFit.scaleDown,
+                      child: TitlesTextWidget(
+                        label: "Total ${cartProvider.getCartItems.length}",
 
-                      // label:
-                      //     "Total (${cartProvider.getCartItems.length} products/${cartProvider.getQty()} Items)"
-                      //
-                    )),
+                        // label:
+                        // "Total (${cartProvider.getCartItems.length} products/${cartProvider.getQty()} Items)",
+                      ),
+                    ),
                     SubtitleTextWidget(
-                      // label:
-                      //     "${cartProvider.getTotal(productProvider: productProvider).toStringAsFixed(2)}\$",
-                      label: "efwfwefewf",
+                      label:
+                          "${cartProvider.getTotal(productProvider: productProvider).toStringAsFixed(2)}\$",
+                      // label: "efwfwefewf",
                       color: Colors.blue,
                     ),
                   ],

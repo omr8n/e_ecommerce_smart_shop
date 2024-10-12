@@ -1,6 +1,14 @@
+// // import 'package:flutter/material.dart';
+// // import 'package:flutter_iconly/flutter_iconly.dart';
+// // import 'package:provider/provider.dart';
+
+// import 'dart:developer';
+
 // import 'package:flutter/material.dart';
 // import 'package:flutter_iconly/flutter_iconly.dart';
 // import 'package:provider/provider.dart';
+
+// import '../providers/wishlist_provider.dart';
 
 // class HeartButtonWidget extends StatefulWidget {
 //   const HeartButtonWidget({
@@ -20,7 +28,7 @@
 //   bool isLoading = false;
 //   @override
 //   Widget build(BuildContext context) {
-//     // final wishlistProvider = Provider.of<WishlistProvider>(context);
+//     final wishlistProvider = Provider.of<WishlistProvider>(context);
 //     return Container(
 //       decoration: BoxDecoration(
 //         shape: BoxShape.circle,
@@ -31,8 +39,8 @@
 //           shape: const CircleBorder(),
 //         ),
 //         onPressed: () async {
-//           // wishlistProvider.addOrRemoveFromWishlist(productId: widget.productId);
-//           // log("wishlist Map is: ${wishlistProvider.getWishlistItems} ");
+//           wishlistProvider.addOrRemoveFromWishlist(productId: widget.productId);
+//           log("wishlist Map is: ${wishlistProvider.getWishlistItems} ");
 //           setState(() {
 //             isLoading = true;
 //           });
@@ -50,10 +58,10 @@
 //           //   }
 //           //   await wishlistProvider.fetchWishlist();
 //           // } catch (e) {
-//           //   MyAppMethods.showErrorORWarningDialog(
-//           //     context: context,
-//           //     subtitle: e.toString(),
-//           //     fct: () {},
+//             // MyAppMethods.showErrorORWarningDialog(
+//             //   context: context,
+//             //   subtitle: e.toString(),
+//             //   fct: () {},
 //           //   );
 //           // } finally {
 //           //   setState(() {
@@ -61,37 +69,44 @@
 //           //   });
 //           // }
 //         },
-//         icon: Icon(Icons.heart_broken),
-//         // icon: isLoading
-//         //     ? const CircularProgressIndicator()
-//         //     : Icon(
-//         //         wishlistProvider.isProductInWishlist(
-//         //                 productId: widget.productId)
-//         //             ? IconlyBold.heart
-//         //             : IconlyLight.heart,
-//         //         size: widget.size,
-//         //         color: wishlistProvider.isProductInWishlist(
-//         //                 productId: widget.productId)
-//         //             ? Colors.red
-//         //             : Colors.grey,
-//         //       ),
+//         //icon: Icon(Icons.heart_broken),
+//         icon: isLoading
+//             ? const CircularProgressIndicator()
+//             : Icon(
+//                 wishlistProvider.isProductInWishlist(
+//                         productId: widget.productId)
+//                     ? IconlyBold.heart
+//                     : IconlyLight.heart,
+//                 size: widget.size,
+//                 color: wishlistProvider.isProductInWishlist(
+//                         productId: widget.productId)
+//                     ? Colors.red
+//                     : Colors.grey,
+//               ),
 //       ),
 //     );
 //   }
 // }
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/wishlist_provider.dart';
 
 class HeartBottonWidget extends StatefulWidget {
   const HeartBottonWidget(
       {super.key,
       required this.size,
       this.color = Colors.transparent,
-      this.iconColor = Colors.white});
+      this.iconColor = Colors.white,
+      required this.productId});
   final double size;
   final Color color;
   final Color iconColor;
+  final String productId;
   @override
   State<HeartBottonWidget> createState() => _HeartBottonWidgetState();
 }
@@ -99,6 +114,8 @@ class HeartBottonWidget extends StatefulWidget {
 class _HeartBottonWidgetState extends State<HeartBottonWidget> {
   @override
   Widget build(BuildContext context) {
+    bool isLoading = false;
+    final wishlistProvider = Provider.of<WishlistProvider>(context);
     return Container(
       decoration: BoxDecoration(
         shape: BoxShape.circle,
@@ -106,12 +123,25 @@ class _HeartBottonWidgetState extends State<HeartBottonWidget> {
       ),
       child: Center(
         child: IconButton(
-            onPressed: () {},
-            icon: Icon(
-              IconlyLight.heart,
-              color: widget.iconColor,
-              size: widget.size,
-            )),
+          onPressed: () {
+            wishlistProvider.addOrRemoveFromWishlist(
+                productId: widget.productId);
+            log("wishlist Map is: ${wishlistProvider.getWishlistItems} ");
+          },
+          icon: isLoading
+              ? const CircularProgressIndicator()
+              : Icon(
+                  wishlistProvider.isProductInWishlist(
+                          productId: widget.productId)
+                      ? IconlyBold.heart
+                      : IconlyLight.heart,
+                  size: widget.size,
+                  color: wishlistProvider.isProductInWishlist(
+                          productId: widget.productId)
+                      ? Colors.red
+                      : Colors.grey,
+                ),
+        ),
       ),
     );
   }

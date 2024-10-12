@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CartModel with ChangeNotifier {
+class CartModel extends ChangeNotifier {
   final String cartId;
   final String productId;
   final int quantity;

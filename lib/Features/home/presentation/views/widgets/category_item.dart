@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/subtitle_text.dart';
+import '../../../../search/presentation/views/search_view.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem({
@@ -14,11 +15,11 @@ class CategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigator.pushNamed(
-        //   context,
-        //   SearchView.routeName,
-        //   arguments: name,
-        // );
+        Navigator.pushNamed(
+          context,
+          SearchView.routeName,
+          arguments: name,
+        );
       },
       child: Column(
         children: [

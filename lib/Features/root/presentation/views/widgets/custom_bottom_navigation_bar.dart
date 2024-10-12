@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../../core/providers/cart_provider.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   const CustomBottomNavigationBar(
@@ -8,6 +11,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
   final void Function(int index)? onDestinationSelected;
   @override
   Widget build(BuildContext context) {
+    final cartProvider = Provider.of<CartProvider>(context);
     return NavigationBar(
       selectedIndex: selectedIndex,
       //selectedIndex: currentView,
@@ -21,23 +25,25 @@ class CustomBottomNavigationBar extends StatelessWidget {
       //   });
       //    controller.jumpToPage(currentView);
       // },
-      destinations: const [
-        NavigationDestination(
+      destinations: [
+        const NavigationDestination(
           selectedIcon: Icon(IconlyBold.home),
           icon: Icon(IconlyLight.home),
           label: "Home",
         ),
-        NavigationDestination(
+        const NavigationDestination(
           selectedIcon: Icon(IconlyBold.search),
           icon: Icon(IconlyLight.search),
           label: "Search",
         ),
         NavigationDestination(
-          selectedIcon: Icon(IconlyBold.bag2),
-          icon: Badge(
-              backgroundColor: Color.fromARGB(255, 20, 78, 126),
-              label: Text("6"),
-              child: Icon(IconlyLight.bag2)),
+          selectedIcon: const Icon(IconlyBold.bag2),
+          icon: Consumer<CartProvider>(builder: (context, cartProvider, child) {
+            return Badge(
+                backgroundColor: const Color.fromARGB(255, 20, 78, 126),
+                label: Text(cartProvider.getCartItems.length.toString()),
+                child: const Icon(IconlyLight.bag2));
+          }),
           // icon: Consumer<CartProvider>(
           //   builder: (context, cartProvider, child) {
           //     return Badge(
@@ -49,7 +55,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
           // ),
           label: "Cart",
         ),
-        NavigationDestination(
+        const NavigationDestination(
           selectedIcon: Icon(IconlyBold.profile),
           icon: Icon(IconlyLight.profile),
           label: "Profile",

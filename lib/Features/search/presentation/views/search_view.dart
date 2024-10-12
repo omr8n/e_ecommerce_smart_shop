@@ -165,12 +165,14 @@ import '../../../../core/widgets/title_text.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({super.key});
-
+  static const routeName = "SearchView";
   @override
   Widget build(BuildContext context) {
+    final String? passedCategory =
+        ModalRoute.of(context)!.settings.arguments as String?;
     return Scaffold(
         appBar: AppBar(
-          title: const TitlesTextWidget(label: "Search"),
+          title: TitlesTextWidget(label: passedCategory ?? "Search"),
           leading: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Image.asset(Assets.imagesBagShoppingCart),
